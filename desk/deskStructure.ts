@@ -2,35 +2,37 @@ import { StructureBuilder } from "sanity/structure";
 
 export const structure = (S: StructureBuilder) =>
   S.list()
-    .id("content")            // ← ここが必須
+    .id("content")
     .title("コンテンツ")
     .items([
       // Blog Posts
       S.listItem()
-        .id("blogPosts")       // ← listItem も id 推奨
+        .id("blogPosts")
         .title("ブログ記事")
-        .schemaType("blogPost")
         .child(
           S.documentList()
-            .id("blogPostsList") // ← documentList も id 推奨
+            .id("blogPostsList")
             .title("ブログ記事")
-            .schemaType("blogPost")
             .filter('_type == "blogPost"')
-            .defaultOrdering([{ field: "publishedAt", direction: "desc" }])
+            .menuItems(S.orderingMenuItemsForType('blogPost'))
+            .defaultOrdering([
+              { field: "publishedAt", direction: "desc" }
+            ])
         ),
 
       // Info Posts
       S.listItem()
         .id("infoPosts")
         .title("お知らせ記事")
-        .schemaType("infoPost")
         .child(
           S.documentList()
             .id("infoPostsList")
             .title("お知らせ記事")
-            .schemaType("infoPost")
             .filter('_type == "infoPost"')
-            .defaultOrdering([{ field: "publishedAt", direction: "desc" }])
+            .menuItems(S.orderingMenuItemsForType('infoPost'))
+            .defaultOrdering([
+              { field: "publishedAt", direction: "desc" }
+            ])
         ),
 
       // Categories
@@ -42,8 +44,9 @@ export const structure = (S: StructureBuilder) =>
           S.documentList()
             .id("categoriesList")
             .title("カテゴリー")
-            .schemaType("category")
             .filter('_type == "category"')
-            .defaultOrdering([{ field: "order", direction: "asc" }])
+            .defaultOrdering([
+              { field: "order", direction: "asc" }
+            ])
         )
     ]);
