@@ -45,4 +45,22 @@ export const infoPost = defineType({
     { name: "noIndex", title: "NoIndex", type: "boolean", initialValue: true },
     { name: "noFollow", title: "NoFollow", type: "boolean", initialValue: true },
   ],
+  // Sanity画面の表示順序
+  orderings: [
+    {
+      title: "公開日（新しい順）",
+      name: "publishedAtDesc",
+      by: [{ field: "publishedAt", direction: "desc" }]
+    },
+    {
+      title: "公開日（古い順）",
+      name: "publishedAtAsc",
+      by: [{ field: "publishedAt", direction: "asc" }]
+    },
+    {
+      title: "タイトル順",
+      name: "titleAsc",
+      by: [{ field: "title", direction: "asc" }]
+    }
+  ]
 });

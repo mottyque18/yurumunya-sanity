@@ -55,4 +55,22 @@ export const blogPost = defineType({
   preview: {
     select: { title: "title", subtitle: "category.name", media: "featuredImage" },
   },
+  // Sanity画面の表示順序
+  orderings: [
+    {
+      title: "公開日（新しい順）",
+      name: "publishedAtDesc",
+      by: [{ field: "publishedAt", direction: "desc" }]
+    },
+    {
+      title: "公開日（古い順）",
+      name: "publishedAtAsc",
+      by: [{ field: "publishedAt", direction: "asc" }]
+    },
+    {
+      title: "タイトル順",
+      name: "titleAsc",
+      by: [{ field: "title", direction: "asc" }]
+    }
+  ]
 });
