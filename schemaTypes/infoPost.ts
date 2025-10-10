@@ -19,7 +19,8 @@ export const infoPost = defineType({
       options: {
         dateFormat: "YYYY-MM-DD",
         timeFormat: "HH:mm",
-        timeStep: 5
+        timeStep: 5,
+        timeZone: "Asia/Tokyo"
       }
     },
     {
@@ -29,7 +30,8 @@ export const infoPost = defineType({
       options: {
         dateFormat: "YYYY-MM-DD",
         timeFormat: "HH:mm",
-        timeStep: 5
+        timeStep: 5,
+        timeZone: "Asia/Tokyo"
       },
       // ドキュメント保存時に自動更新
       // readOnly: true,
